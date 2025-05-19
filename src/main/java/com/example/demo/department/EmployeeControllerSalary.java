@@ -1,4 +1,5 @@
 package com.example.demo.department;
+
 import com.example.demo.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,11 +29,13 @@ public class EmployeeControllerSalary {
         Employee employee = employeeServiseSalary.findMinSalaryEmployeeByDepartment(department);
         return employee.getLastName() + " " + employee.getFirstName() + " " + employee.getSalary();
     }
+
     @GetMapping(path = "/departments/all")
     public List<Employee> allEmployeesByDepartment(@RequestParam("departmentId") int department) {
         return employeeServiseSalary.allEmployeesByDepartment(department);
 
     }
+
     @GetMapping("/all")
     public Map<Integer, List<Employee>> getTopEmployeesByDepartment() {
         return employeeServiseSalary.allEmployeesDepartments();

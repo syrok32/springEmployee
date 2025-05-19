@@ -14,6 +14,7 @@ public class EmployeeService implements EmployeeServiceInter {
     Map<String, Employee> employeeMap = new HashMap<>();
 
     private static final int MAX_EMPLOYEES = 10;
+
     @Override
     public Employee addEmployee(Employee employee) {
         if (employeeMap.size() >= MAX_EMPLOYEES) {
@@ -36,13 +37,14 @@ public class EmployeeService implements EmployeeServiceInter {
 
     @Override
     public Employee findEmployee(String name, String lastName) {
-        Employee employee = new Employee(name, lastName, 20000,3);
+        Employee employee = new Employee(name, lastName, 20000, 3);
         if (employeeMap.containsKey(employee.getFullName())) {
             return employeeMap.get(employee.getFullName());
         }
         throw new EmployeeNotFoundException("dsd");
 
     }
+
     public Map<String, Employee> getEmployeeMap() {
         return employeeMap;
 

@@ -16,7 +16,7 @@ public class EmployeeServiseSalary implements EmployeeServiseSalaryInter {
 
     private final EmployeeService employeeService;
 
-    public  EmployeeServiseSalary(EmployeeService employeeService) {
+    public EmployeeServiseSalary(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -25,15 +25,17 @@ public class EmployeeServiseSalary implements EmployeeServiseSalaryInter {
         return employeeService.getEmployeeMap().values().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .max(Comparator.comparingInt(Employee::getSalary))
-                .orElseThrow(() -> new  EmployeeNotFoundException("No" + department));
+                .orElseThrow(() -> new EmployeeNotFoundException("No" + department));
     }
+
     @Override
     public Employee findMinSalaryEmployeeByDepartment(int department) {
         return employeeService.getEmployeeMap().values().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("NO" + department));
-        }
+    }
+
     @Override
     public List<Employee> allEmployeesByDepartment(int department) {
         return employeeService.getEmployeeMap().values().stream()
