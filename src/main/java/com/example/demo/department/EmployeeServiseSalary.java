@@ -41,8 +41,6 @@ public class EmployeeServiseSalary implements EmployeeServiseSalaryInter {
                 .collect(Collectors.toList());
     }
 
-
-
     @Override
     public Map<Integer, List<Employee>> allEmployeesDepartments() {
         return employeeService.getEmployeeMap().values().stream()
